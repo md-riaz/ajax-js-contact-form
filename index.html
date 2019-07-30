@@ -5,12 +5,6 @@
 	<meta charset="utf-8">
 	<title>AJAX Form Without jQuery</title>
 	<script type="text/javascript" src="ajax.js"></script>
-	<script type="text/javascript">
-		/* Usage */
-		window.onload = function (){
-    		AJAXform( 'my-form', 'my-button', 'my-result', 'post' ); // AJAXform( 'your-form-id', 'button-id', 'result-element-id', 'post or get method' );
-		};
-	</script>
 </head>
 <body>
 
@@ -23,5 +17,11 @@
 
 	<div id="my-result"></div>
 
+<script type="text/javascript">
+	/* Usage */
+	window.onload = function (){
+		AJAXform( 'my-form', 'my-button', 'my-result', 'post' ); // AJAXform( 'your-form-id', 'button-id', 'result-element-id', 'post or get method' );
+	};
+</script>
 </body>
 </html>

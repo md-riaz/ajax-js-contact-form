@@ -1,9 +1,3 @@
-/*
-    AJAX Form in Pure JavaScript, without jQuery.
-    Written by Qassim Hassan.
-    http://wp-time.com/ajax-form-pure-javascript-without-jquery/
-*/
-
 
 /* AJAX Form Function */
 function AJAXform( formID, buttonID, resultID, formMethod = 'post' ){
