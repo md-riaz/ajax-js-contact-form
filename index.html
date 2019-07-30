@@ -1,0 +1,27 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>AJAX Form Without jQuery</title>
+	<script type="text/javascript" src="ajax.js"></script>
+	<script type="text/javascript">
+		/* Usage */
+		window.onload = function (){
+    		AJAXform( 'my-form', 'my-button', 'my-result', 'post' ); // AJAXform( 'your-form-id', 'button-id', 'result-element-id', 'post or get method' );
+		};
+	</script>
+</head>
+<body>
+
+	<form action="form.php" id="my-form">
+		<input type="text" name="name" value="">
+		<input type="text" name="email" value="">
+		<input type="text" name="message" value="">
+    	<input type="submit" name="submit" value="Send me!" id="my-button">
+	</form>
+
+	<div id="my-result"></div>
+
+</body>
+</html>
