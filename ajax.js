@@ -1,3 +1,9 @@
+/*
+    AJAX Form in Pure JavaScript, without jQuery.
+    Written by Qassim Hassan.
+    http://wp-time.com/ajax-form-pure-javascript-without-jquery/
+*/
+
 
 /* AJAX Form Function */
 function AJAXform( formID, buttonID, resultID, formMethod = 'post' ){
@@ -5,9 +11,10 @@ function AJAXform( formID, buttonID, resultID, formMethod = 'post' ){
     var selectButton = document.getElementById(buttonID); // Select the button by ID.
     var selectResult = document.getElementById(resultID); // Select result element by ID.
     var formAction = document.getElementById(formID).getAttribute('action'); // Get the form action.
-    var formInputs = document.getElementById(formID).querySelectorAll("input"); // Get the form inputs.
+    var formInputs = document.getElementById(formID).querySelectorAll(".input"); // Get the form inputs.
 
     function XMLhttp(){
+        console.log("XMLhttp");
         var httpRequest = new XMLHttpRequest();
         var formData = new FormData(); 
 
@@ -18,6 +25,7 @@ function AJAXform( formID, buttonID, resultID, formMethod = 'post' ){
         httpRequest.onreadystatechange = function(){
             if ( this.readyState == 4 && this.status == 200 ) {
                 selectResult.innerHTML = this.responseText; // Display the result inside result element.
+                document.getElementById("sbtBtn").innerHTML = "Send";
             }
         };
 
@@ -27,6 +35,7 @@ function AJAXform( formID, buttonID, resultID, formMethod = 'post' ){
 
     selectButton.onclick = function(){ // If clicked on the button.
        XMLhttp();
+        document.getElementById("sbtBtn").innerHTML = "Wait...";
     }
 
     selectForm.onsubmit = function(){ // Prevent page refresh

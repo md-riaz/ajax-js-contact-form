@@ -1,27 +1,50 @@
-
 <!DOCTYPE html>
 <html>
-<head>
-	<meta charset="utf-8">
-	<title>AJAX Form Without jQuery</title>
-	<script type="text/javascript" src="ajax.js"></script>
-</head>
-<body>
-
-	<form action="form.php" id="my-form">
-		<input type="text" name="name" value="">
-		<input type="text" name="email" value="">
-		<input type="text" name="message" value="">
-    	<input type="submit" name="submit" value="Send me!" id="my-button">
-	</form>
-
-	<div id="my-result"></div>
-
-<script type="text/javascript">
-	/* Usage */
-	window.onload = function (){
-		AJAXform( 'my-form', 'my-button', 'my-result', 'post' ); // AJAXform( 'your-form-id', 'button-id', 'result-element-id', 'post or get method' );
-	};
-</script>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <title>AJAX Form Without jQuery</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Titillium+Web&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script type="text/javascript" src="ajax.js"></script>
+    <script type="text/javascript">
+      /* Usage */
+      window.onload = function() {
+        AJAXform("cnt-form", "sbtBtn", "form-response", "post"); // AJAXform( 'your-form-id', 'button-id', 'result-element-id', 'post or get method' );
+      };
+    </script>
+  </head>
+  <body>
+    <div class="wrapper">
+      <form action="form.php" id="cnt-form">
+        <label for="name">Full Name</label>
+        <input
+          type="text"
+          name="name"
+          placeholder="Enter your Name"
+          class="input"
+        />
+        <label for="email">Email</label>
+        <input
+          type="email"
+          name="email"
+          placeholder="Enter email address"
+          class="input"
+        />
+        <label for="message">Your messege</label>
+        <textarea
+          name="message"
+          rows="4"
+          cols="32"
+          placeholder="Type your messege"
+          class="input"
+        ></textarea>
+        <button type="submit" name="submit" id="sbtBtn">Send</button>
+      </form>
+      <div id="form-response">This is temporary mail result</div>
+    </div>
+  </body>
 </html>
