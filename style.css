@@ -12,6 +12,7 @@ body {
   line-height: 1;
   background: lightgrey;
 }
+
 .wrapper {
   width: 400px;
   height: 400px;
@@ -23,35 +24,42 @@ body {
   align-items: center;
   flex-direction: column;
 }
+
 #cnt-form {
   text-align-last: left;
   font-size: 1.2em;
   height: 370px;
   width: 325px;
 }
+
 #cnt-form label {
   color: #e5a22b;
   display: block;
   margin: 10px 0;
 }
+
 #cnt-form input {
   height: 20px;
   width: 300px;
   font-size: 0.8em;
   border: 2px solid #e5a22b;
 }
+
 #cnt-form input[placeholder] {
   padding: 5px;
 }
+
 #cnt-form textarea {
   font-size: inherit;
   font-family: "Titillium Web", sans-serif;
   border: 2px solid #e5a22b;
+  display: block;
 }
 
 #cnt-form #sbtBtn {
-  display: inline-block;
-  margin: 10px;
+  display: flex;
+  align-items: center;
+  margin: 10px auto;
   padding: 15px 40px;
   outline: none;
   border: none;
@@ -61,14 +69,44 @@ body {
   cursor: pointer;
   border-radius: 20px;
   transition: 0.4s;
-  float: right;
+  position: relative;
 }
+
 #cnt-form #sbtBtn:hover {
   background: #f44336;
 }
+
 #form-response {
   display: inline-block;
   font-weight: bold;
   clear: both;
   padding: 10px;
+}
+
+.sBtn {
+  position: relative;
+}
+
+.loader {
+  display: none;
+  position: absolute;
+  top: 30%;
+  right: 32%;
+  border: 2px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 2px solid blue;
+  border-bottom: 2px solid blue;
+  width: 15px;
+  height: 15px;
+  animation: spin 1.5s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }
