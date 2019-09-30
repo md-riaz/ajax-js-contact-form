@@ -19,10 +19,10 @@ $to = 'bpimdriaz@gmail.com'; // Add your email address inbetween the '' replacin
 
 $email_subject = "Website Contact Form:  $name";
 
-$email_body = "You have received a new message from your <strong>website</strong> contact form.<br>".
-              "Here are the details:<br>
-              Name: $name <br>
-              Email: $email_address <br>
+$email_body = "You have received a new message from your <strong>website</strong> contact form.<br><br>".
+              "Here are the details:<br><br>
+              Name: $name <br><br>
+              Email: $email_address <br><br>
               Message:<br> $message";
 
 $headers = "From: noreply@riaz.ml\n"; // This is the email address the generated message will be from. We recommend using something like noreply@yourdomain.com.
