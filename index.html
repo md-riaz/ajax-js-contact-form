@@ -1,38 +1,91 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-  <meta charset="utf-8" />
-  <title>AJAX Form Without jQuery</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link href="https://fonts.googleapis.com/css?family=Titillium+Web&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
-  <script type="text/javascript">
-    /* Usage */
-    window.onload = function () {
-      AJAXform("cnt-form", "sbtBtn", "form-response",
-        "post"); // AJAXform( 'your-form-id', 'button-id', 'result-element-id', 'post or get method' );
-    };
-  </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>AJAX Form Example</title>
 </head>
 
 <body>
-  <div class="wrapper">
-    <form action="form.php" id="cnt-form">
-      <label for="name">Full Name</label>
-      <input type="text" name="name" placeholder="Enter your Name" class="input" />
-      <label for="email">Email</label>
-      <input type="email" name="email" placeholder="Enter email address" class="input" />
-      <label for="message">Your messege</label>
-      <textarea name="message" rows="4" cols="32" placeholder="Type your messege" class="input"></textarea>
-      <div class="sBtn">
-        <button type="submit" name="submit" id="sbtBtn">Send</button>
-        <div class="loader"></div>
-      </div>
-    </form>
-    <div id="form-response">This is temporary mail result</div>
-  </div>
-  <script src="ajax.js"></script>
+    <div>
+        <form>
+            <div>
+                <label for="email">Email</label>
+                <input id="emailInput" type="email" placeholder="Enter your email" name="email" required />
+            </div>
+            <div>
+                <label for="subject">Subject</label>
+                <input id="subjectInput" type="text" placeholder="Enter subject" name="subject" accept-charset="utf-8"
+                    required />
+            </div>
+            <div class="form-group">
+                <label for="poruka">Message</label>
+                <textarea id="msgInput" type="text" placeholder="Enter message" rows="5" name="msg"
+                    accept-charset="utf-8" required></textarea>
+            </div>
+        </form>
+        <div>
+            <button id="submitBtn" type="button" onclick="sendMail()">Send</button>
+        </div>
+        <div id="ajaxResponseSuccess" role="alert"> </div>
+        <div id="ajaxResponseFail" role="alert"></div>
+    </div>
+    <script>
+        document.getElementById("emailInput").addEventListener("focus", function () {
+            document.getElementById("ajaxResponseFail").style.display = "none";
+            document.getElementById("ajaxResponseSuccess").style.display = "none";
+        })
+        document.getElementById("subjectInput").addEventListener("focus", function () {
+            document.getElementById("ajaxResponseFail").style.display = "none";
+            document.getElementById("ajaxResponseSuccess").style.display = "none";
+        })
+        document.getElementById("msgInput").addEventListener("focus", function () {
+            document.getElementById("ajaxResponseFail").style.display = "none";
+            document.getElementById("ajaxResponseSuccess").style.display = "none";
+        })
+
+        function sendMail() {
+            var email = document.getElementById("emailInput").value;
+            var subject = document.getElementById("subjectInput").value;
+            var msg = document.getElementById("msgInput").value;
+
+            var errorMsg = "Please enter all information.";
+
+            if (email == "" || subject == "" || msg == "") {
+                document.getElementById("ajaxResponseFail").style.display = "block";
+                document.getElementById("ajaxResponseFail").innerHTML = errorMsg;
+            } else {
+
+                var successMsg = "Mail sent. You will get confirmation soon.";
+                var failMsg = "Mail not sent. Please try again.";
+
+                var formdata = new FormData();
+                formdata.append("email", email);
+                formdata.append("subject", subject);
+                formdata.append("msg", msg);
+
+                var xhttp;
+                xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        document.getElementById("ajaxResponseFail").style.display = "none";
+                        document.getElementById("ajaxResponseSuccess").style.display = "block";
+                        document.getElementById("ajaxResponseSuccess").innerHTML = successMsg;
+                    } else if (this.readyState == 4 && this.status != 200) {
+                        document.getElementById("ajaxResponseSuccess").style.display = "none";
+                        document.getElementById("ajaxResponseFail").style.display = "block";
+                        document.getElementById("ajaxResponseFail").innerHTML = failMsg;
+                    }
+                }
+                xhttp.open("POST", "sendMail.php", true);
+                xhttp.send(formdata);
+            }
+
+
+        }
+    </script>
 </body>
 
 </html>
